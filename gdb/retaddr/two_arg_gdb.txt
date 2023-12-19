@@ -1,0 +1,46 @@
+End of assembler dump.
+(gdb) si
+0x000055555555519e	12		hello(a, b);
+(gdb) disassem
+Dump of assembler code for function main:
+   0x000055555555517a <+0>:	endbr64
+   0x000055555555517e <+4>:	push   %rbp
+   0x000055555555517f <+5>:	mov    %rsp,%rbp
+   0x0000555555555182 <+8>:	sub    $0x10,%rsp
+   0x0000555555555186 <+12>:	movl   $0x800,-0x8(%rbp)
+   0x000055555555518d <+19>:	movl   $0x1000,-0x4(%rbp)
+   0x0000555555555194 <+26>:	mov    -0x4(%rbp),%edx
+   0x0000555555555197 <+29>:	mov    -0x8(%rbp),%eax
+   0x000055555555519a <+32>:	mov    %edx,%esi
+   0x000055555555519c <+34>:	mov    %eax,%edi
+=> 0x000055555555519e <+36>:	call   0x555555555149 <hello>
+   0x00005555555551a3 <+41>:	nop
+   0x00005555555551a4 <+42>:	leave
+   0x00005555555551a5 <+43>:	ret
+End of assembler dump.
+(gdb) si
+hello (a=0, b=0) at hello_func_two_arg.c:4
+4	{
+(gdb) disassem
+Dump of assembler code for function hello:
+=> 0x0000555555555149 <+0>:	endbr64
+   0x000055555555514d <+4>:	push   %rbp
+   0x000055555555514e <+5>:	mov    %rsp,%rbp
+   0x0000555555555151 <+8>:	sub    $0x10,%rsp
+   0x0000555555555155 <+12>:	mov    %edi,-0x4(%rbp)
+   0x0000555555555158 <+15>:	mov    %esi,-0x8(%rbp)
+   0x000055555555515b <+18>:	mov    -0x8(%rbp),%edx
+   0x000055555555515e <+21>:	mov    -0x4(%rbp),%eax
+   0x0000555555555161 <+24>:	mov    %eax,%esi
+   0x0000555555555163 <+26>:	lea    0xe9a(%rip),%rax        # 0x555555556004
+   0x000055555555516a <+33>:	mov    %rax,%rdi
+   0x000055555555516d <+36>:	mov    $0x0,%eax
+   0x0000555555555172 <+41>:	call   0x555555555050 <printf@plt>
+   0x0000555555555177 <+46>:	nop
+   0x0000555555555178 <+47>:	leave
+   0x0000555555555179 <+48>:	ret
+End of assembler dump.
+(gdb) p $rdi
+$1 = 2048
+(gdb) p $rsi
+$2 = 4096
